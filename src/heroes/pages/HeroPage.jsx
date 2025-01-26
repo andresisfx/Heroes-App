@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const DcPages = () => {
+export const HeroPage = () => {
   return (
     <>
-      <h1>DcPages</h1> 
+     <h1>HeroPage</h1>
     </>
   )
 }

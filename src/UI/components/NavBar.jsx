@@ -28,12 +28,7 @@ export const NavBar = () => {
                     >
                         DC
                     </NavLink>
-                    <NavLink 
-                        className={({isActive})=>`nav-item nav-link ${isActive ? 'active' : ''}`}
-                        to="/logout"
-                    >
-                        Logout
-                    </NavLink>
+                    
                 </div>
             </div>
 

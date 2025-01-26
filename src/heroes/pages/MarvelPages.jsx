@@ -2,6 +2,8 @@ import React from 'react'
 
 export const MarvelPages = () => {
   return (
-    <div>MarvelPages</div>
+    <>
+      <h1>MarvelPages</h1> 
+    </>
   )
 }
