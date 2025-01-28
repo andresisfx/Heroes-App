@@ -11,9 +11,9 @@ export const HeroCard = (
       ) => {
        
   return (
-    <div className="card ms-3" style={{maxWidth: '540px'}}>
+    <div className="card ms-3 animate__animated animate__fadeIn " style={{maxWidth: '540px'}}>
         <div className="row g-0">
-            <div className="col-md-4">
+            <div className="col-md-4 ">
                 <img src={`./assets/heroes/${id}.jpg`} className="img-fluid rounded-start" alt={superhero} />
             </div>
             <div className="col-md-8">
