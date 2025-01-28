@@ -9,7 +9,7 @@ export const HeroCard = (
     first_appearance,
     characters}
       ) => {
-        console.log("Aqui Id del heroe: ",id)
+       
   return (
     <div className="card ms-3" style={{maxWidth: '540px'}}>
         <div className="row g-0">
