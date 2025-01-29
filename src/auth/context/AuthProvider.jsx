@@ -9,9 +9,23 @@ import { authReducer } from './authreducer';
 export const AuthProvider = ({children}) => {
 
     const [state,dispatch] = React.useReducer(authReducer,initialState);
+    const login = (name='') => {
+       const action = {
+            type:types.login,
+            payload:{
+                id:"ABC",
+                name:'Fernando'
+
+            }
+        }
+        dispatch(action);
+    }
 
   return (
-    <AuthContext.Provider value={{}}>
+    <AuthContext.Provider value={{
+        ...authState,
+        login:login
+    }}>
         {children}
     </AuthContext.Provider>
   )
