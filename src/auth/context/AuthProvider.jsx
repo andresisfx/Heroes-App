@@ -1,6 +1,7 @@
 import React from 'react'
 import { AuthContext } from './AuthContext'
 import { authReducer } from './authreducer';
+import { types } from '../types/types';
 
  const initialState = {
     logged:false
@@ -8,13 +9,13 @@ import { authReducer } from './authreducer';
 
 export const AuthProvider = ({children}) => {
 
-    const [state,dispatch] = React.useReducer(authReducer,initialState);
+    const [authState,dispatch] = React.useReducer(authReducer,initialState);
     const login = (name='') => {
        const action = {
             type:types.login,
             payload:{
                 id:"ABC",
-                name:'Fernando'
+                name:name
 
             }
         }

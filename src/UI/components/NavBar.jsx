@@ -1,7 +1,12 @@
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../auth/context/AuthContext';
+import { useContext } from 'react';
 
 
 export const NavBar = () => {
+
+    const {user} = useContext(AuthContext);
+
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
             
@@ -41,7 +46,7 @@ export const NavBar = () => {
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
                 <ul className="navbar-nav ml-auto">
                    <span className="nav-item nav-link text-primary">
-                        Fernando
+                        {user?.name}
                    </span>
 
                    <button
