@@ -12,7 +12,9 @@ exports[`Pruebas en SearchPage debe de mostrar el componente 1`] = `
     <div
       class="col-5"
     >
-      <form>
+      <form
+        aria-label="form"
+      >
         <input
           aria-label="Find your hero"
           autocomplete="off"

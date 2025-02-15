@@ -1,9 +1,17 @@
 import { MemoryRouter } from "react-router-dom";
-import { render ,screen} from "@testing-library/react";
+import { render ,screen,fireEvent} from "@testing-library/react";
 import { SearchPage } from "../../../src/heroes/pages/SearchPage";
+
+
+const mockNavigate = jest.fn();
+jest.mock('react-router-dom', () => ({
+        ...jest.requireActual('react-router-dom'),
+        useNavigate: () => mockNavigate,
+    }));
 
 describe('Pruebas en SearchPage', () => {
 
+      beforeEach(() => jest.clearAllMocks());
 
     test('debe de mostrar el componente', () => {
         
@@ -13,7 +21,7 @@ describe('Pruebas en SearchPage', () => {
                     <SearchPage/>
               </MemoryRouter>
         );
-        expect(container).toMatchSnapshot();
+        expect(container).toMatchSnapshot()
         
     })
 
@@ -32,5 +40,32 @@ describe('Pruebas en SearchPage', () => {
 
         const alert=screen.getByLabelText('alert-danger');
         expect(alert.style.display).toBe('none');
+    })
+
+    test('debe de mostrar un error si el heroe no existe', () => {
+        
+        render(
+              <MemoryRouter initialEntries={['/search?q=batman123']}>
+                    <SearchPage/>
+              </MemoryRouter>
+        );
+        const alert=screen.getByLabelText('alert-danger');
+        expect(alert.style.display).toBe('');
+    })
+
+    test('debe de llamar el navigate', () => {
+        
+       
+        render(
+              <MemoryRouter initialEntries={['/search']}>
+                    <SearchPage navigate={mockNavigate}/>
+              </MemoryRouter>
+        );
+        const inputValue=screen.getByRole('textbox')
+        fireEvent.change(inputValue,{target:{value:'superman'}})
+        const form=screen.getByRole('form');
+        fireEvent.submit(form);
+        expect(mockNavigate).toHaveBeenCalledWith('?q=superman');
+        
     })
 })
